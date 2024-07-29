@@ -21,6 +21,7 @@ Esse projeto utiliza o algoritmo guloso do trocador de moedas para resolver o pr
 ![imagem1](/screenshots/1.png)
 ![imagem2](/screenshots/2.png)
 ![imagem3](/screenshots/3.png)
+![imagem4](/screenshots/4.png)
 
 ## Instalação
 
