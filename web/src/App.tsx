@@ -8,14 +8,18 @@ function App() {
     '5': 0,
     '2.5': 0,
   });
+  const [mensagem, setMensagem] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setWeight(parseInt(e.target.value));
+    setWeight(parseFloat(e.target.value));
   };
 
   const handleClick = () => {
-    // Peso descontando a barra, para calcular quantas anilhas precisam e calculando apenas um dos lados
-    let weightLeft = Math.floor((weight - 20) / 2);
+    if (weight < 20) {
+      alert('O peso mínimo é 20kg, por conta do peso da barra');
+      return;
+    }
+    let weightLeft = (weight - 20) / 2;
     const anilhasDisponiveis = [20, 10, 5, 2.5];
     const novaDistribuicao: any = {
       '20': 0,
@@ -24,15 +28,25 @@ function App() {
       '2.5': 0,
     };
 
+    const pesoInicial = weightLeft;
     while (weightLeft > 0) {
       const anilha = anilhasDisponiveis.find((anilha) => weightLeft >= anilha);
       if (!anilha) break;
 
-      novaDistribuicao[anilha] = novaDistribuicao[anilha] + 1;
+      novaDistribuicao[anilha.toString()] =
+        novaDistribuicao[anilha.toString()] + 1;
       weightLeft -= anilha;
     }
 
-    console.log(novaDistribuicao);
+    const pesoCalculado = 20 + (pesoInicial - weightLeft) * 2;
+    if (weightLeft > 0) {
+      setMensagem(
+        `O peso desejado foi ${weight} kg, mas o peso mais próximo possível é ${pesoCalculado} kg.`
+      );
+    } else {
+      setMensagem(null);
+    }
+
     setAnilhas(novaDistribuicao);
   };
 
@@ -153,6 +167,7 @@ function App() {
             </div>
             <div className="text-white mt-8">
               <h3 className="text-xl font-bold">Distribuição de Anilhas:</h3>
+              {mensagem && <p className="my-2 text-red-500">{mensagem}</p>}
               <p>20 kg: {anilhas['20'] * 2}</p>
               <p>10 kg: {anilhas['10'] * 2}</p>
               <p>5 kg: {anilhas['5'] * 2}</p>
