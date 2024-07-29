@@ -41,7 +41,7 @@ function App() {
     const pesoCalculado = 20 + (pesoInicial - weightLeft) * 2;
     if (weightLeft > 0) {
       setMensagem(
-        `O peso desejado foi ${weight} kg, mas o peso mais próximo possível é ${pesoCalculado} kg.`
+        `O peso abaixo de ${weight}kg mais próximo possível é de ${pesoCalculado}kg.`
       );
     } else {
       setMensagem(null);

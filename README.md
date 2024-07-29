@@ -3,7 +3,7 @@
 **Número da Lista**: 3<br>
 **Conteúdo da Disciplina**: Greedy<br>
 
-<!-- **Vídeo de Apresentação**: [Link do vídeo](https://youtu.be/WBKIZKQbqQw) -->
+**Vídeo de Apresentação**: [Link do vídeo](https://youtu.be/b9MX_UjoT28)
 
 ## Alunos
 
